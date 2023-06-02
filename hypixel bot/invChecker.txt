@@ -1,0 +1,67 @@
+//Inventory full?
+if(@fullinv == 1);
+	if(@sell == 1);
+		if(@selltobazzar == 1);
+			if(@boostercookie == 0);
+				log("No Booster Cookie")
+				log("Going to BZ to sell")
+				//Bazzar
+				echo(/hub)
+				wait(3000ms)
+				looks(-80,,0.9f);
+				goto(-38,~,-79);
+				do;wait(1t);until(!%BARITONE%)
+				keydown(right);
+				wait(100ms);
+				keyup(right);
+				looks(west,0.6f);
+				looks(,40,0.4f);
+				slot(1);
+				wait(400ms)
+				key(attack);
+				wait(1200ms)
+				slotclick(38);
+				wait(600ms)
+				slotclick(11);
+				wait(900ms)
+				slotclick(11);
+				wait(900ms)
+				slotclick(22);
+				wait(600ms)
+				slotclick(40);
+				wait(600ms)
+				set(@sold,0);
+				set(@fullinv,0)
+				log("Sold items")
+				set(@invcheck,0);
+				gui()
+			else;
+				log("Selling to BZ")
+				wait(1200ms)
+				slotclick(38);
+				wait(600ms)
+				slotclick(11);
+				wait(900ms)
+				slotclick(11);
+				wait(900ms)
+				slotclick(22);
+				wait(600ms)
+				slotclick(40);
+				set(@sold,0);
+				set(@fullinv,0)
+				set(@invcheck,0);
+				log("Sold items")
+				gui()
+			endif;
+		endif;
+		if(@selltonpc == 1);
+			log("selling to npc still wip")
+		endif;
+	else;
+		log("Inventory full but not selling");
+		set(@invcheck,0);
+	endif;
+else;
+	log("Inventory not full");
+	set(@invcheck,0);
+endif;

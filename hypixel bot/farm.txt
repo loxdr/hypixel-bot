@@ -1,0 +1,172 @@
+function scan(#firstx,#firsty,#height,#seconddifference,#subtract,#maxwheat);
+	set(#wheat,0);
+	unsafe(600);
+		for(#row,%#firstx%,%#firsty%);
+		    for(#length,0,%#seconddifference%);
+		    	dec(#length,%#subtract%);
+		        getid(%#row%,%#height%,%#length%,&idvar);
+		        if(&idvar == "wheat");
+		            inc(#wheat);
+		        endif;
+		    next;
+		next;
+	endunsafe;
+	getpercentage(#wheatpercent,%#wheat%,%#maxwheat%);
+	return(%#wheatpercent%);
+endfunction;
+
+if(@farm1 == 1);
+	// First farm
+	@#wheatpercent1 = scan(37,48,70,8,126,75)
+	if(@#wheatpercent1 > @#farmthreshold);
+		goto(36,70,-120)
+		do;wait(1t);until(!%BARITONE%)
+		log("&6&lJookly Kernel &r&7> Farming First Area")
+		log("&6&lJookly Kernel &r&7> Detected: %@#wheatpercent1%/100");
+		#wheatpercent11 = scan(37,48,70,8,126,75)
+		if(#wheatpercent11 > @#farmthreshold);
+			set(@farmhelper, 1)
+			looks(north,0.6f);
+			looks(+60,20,0.6f)
+			unsafe(1);
+				goto(41,~,-122)
+				wait(750ms);
+				looks(+170,,0.9f)
+				looks(-170,,0.8f)
+				looks(-170,,0.9f)
+				looks(+170,,0.8f)
+				looks(+20,,0.7f);
+				goto(44,~,-123)
+				wait(775ms);
+				looks(+140,,0.9f)
+				looks(-140,,0.8f)
+				looks(-140,16,1)
+				looks(+140,16,0.9f)
+				looks(,20,0.6f)
+				set(@farmhelper,0)
+				set(@farm1,0)
+			endunsafe;
+		else;
+			log("&6&lJookly Kernel &r&7> Failsafe")
+			log("&6&lJookly Kernel &r&7> Detected: %#wheatpercent11%/100");
+		endif;
+	else;
+		log("&6&lJookly Kernel &r&7> Skipping First farm")
+		log("&6&lJookly Kernel &r&7> Detected: %@#wheatpercent1%/100");
+	endif;
+endif;
+if(@farm2 == 1);
+	// Second farm
+	@#wheatpercent2 = scan(55,71,71,15,141,204)
+	if(@#wheatpercent2 > @#farmthreshold);
+		goto(55,71,-139);
+		do;wait(1t);until(!%BARITONE%)
+		log("&6&lJookly Kernel &r&7> Farming Second Area")
+		log("&6&lJookly Kernel &r&7> Detected: %@#wheatpercent2%/100");
+		#wheatpercent21 = scan(55,71,71,15,141,204)
+		if(#wheatpercent21 > @#farmthreshold);
+			set(@farmhelper, 1)
+			looks(east,0.6f);
+			looks(+22,20,0.6f)
+			unsafe(1);
+				goto(60,~,-136);
+				do;wait(1t);until(!%BARITONE%)
+				looks(+179,,1.3f)
+				looks(-179,,1.0f)
+				looks(-150,,0.9f)
+				looks(+150,,1.2f)
+				looks(-25,,0.5f)
+				goto(66,~,-138);
+				do;wait(1t);until(!%BARITONE%)
+				looks(+140,22,0.9f)
+				looks(-140,20,0.8f)
+				looks(-160,12,1.1f)
+				looks(,20,0.5f);
+				looks(+160,20,1.4f)
+				looks(+100,,0.8f)
+				goto(65,~,-132);
+				do;wait(1t);until(!%BARITONE%)
+				looks(-130,,0.9f)
+				looks(+130,,0.7f)
+				looks(+130,,0.7f)
+				looks(-130,,0.7f)
+				looks(+80,,0.8f)
+				goto(62,~,-129);
+				do;wait(1t);until(!%BARITONE%)
+				looks(-130,,0.9f)
+				looks(+130,,0.7f)
+				looks(+60,,0.9f)
+				goto(59,~,-133);
+				do;wait(1t);until(!%BARITONE%)
+				looks(-110,,0.9f)
+				looks(+110,,0.7f)
+				set(@farmhelper,0)
+				set(@farm2,0)
+			endunsafe;
+		else;
+			log("&6&lJookly Kernel &r&7> Failsafe")
+			log("&6&lJookly Kernel &r&7> Detected: %#wheatpercent21%/100");
+		endif;
+	else;
+		log("&6&lJookly Kernel &r&7> Skipping Second farm")
+		log("&6&lJookly Kernel &r&7> Detected: %@#wheatpercent2%/100");
+	endif;
+endif;
+if(@farm3 == 1);
+	// Third farm
+	@#wheatpercent3 = scan(65,81,72,15,168,184)
+	if(@#wheatpercent3 > @#farmthreshold);
+		goto(65,72,-155);
+		do;wait(1t);until(!%BARITONE%)
+		log("&6&lJookly Kernel &r&7> Farming Third Area")
+		log("&6&lJookly Kernel &r&7> Detected: %@#wheatpercent3%/100");
+		#wheatpercent31 = scan(65,81,72,15,168,184)
+		if(#wheatpercent31 > @#farmthreshold);
+			looks(north);
+			set(@farmhelper,1)
+			looks(+45,20,0.8f);
+			unsafe(1);
+				goto(69,~,-158);
+				do;wait(1t);until(!%BARITONE%)
+				looks(+179,,1.3f)
+				looks(-179,,1.0f)
+				looks(-150,,0.9f)
+				looks(+150,,1.2f)
+				looks(+30,,0.6f)
+				goto(75,~,-158);
+				do;wait(1t);until(!%BARITONE%)
+				looks(+150,,1.3f)
+				looks(-150,,1.0f)
+				looks(-130,,1.0f)
+				looks(+130,,1.3f)
+				goto(78,~,-161);
+				do;wait(1t);until(!%BARITONE%)
+				looks(north,0.6f)
+				looks(,22,0.3f);
+				looks(+160,22,1.3f);
+				looks(-160,22,1.3f);
+				looks(-95,,1.3f);
+				goto(72,~,-165);
+				do;wait(1t);until(!%BARITONE%)
+				looks(-40,16,1.3f);
+				looks(+40,16,1.0f);
+				looks(+179,22,1.3f)
+				looks(-179,,1.2f)
+				set(@farmhelper,0)
+				set(@farm3,0)
+			endunsafe;
+		else;
+			log("&6&lJookly Kernel &r&7> Failsafe")
+			log("&6&lJookly Kernel &r&7> Detected: %#wheatpercent31%/100");
+		endif;
+	else;
+		log("&6&lJookly Kernel &r&7> Skipping Third farm")
+		log("&6&lJookly Kernel &r&7> Detected: %@#wheatpercent3%/100");
+	endif;
+endif;
+
+goto(76,72,-182);
+exec("scan.txt","Scanning Farms");
+do();wait(1t);until(!BARITONE);
+
+set(@waittofinishfarming,0);

@@ -1,0 +1,51 @@
+// Farm.txt
+// Made by jookly
+
+//  add failsafe -- better scoreboard reader
+//  add discord webhooks -- send to server
+//  upgrade gui -- settings menu / (information / stats)
+//                 sell (on/off)
+//                 sell to (bazarr/npc)
+//                 gui (on/off)
+//                 failsafe (on/off)
+//                 cooldown (on/off)
+//                 randomiser (on/off)
+//  add randomiser to movements and make it less bot like
+//  add cooldown and gui tracker
+//  sell to farmer npc -- upgrade first time config)
+
+
+log("&6&lJookly Kernel &r&7> Executing Farm Operations")
+set(@farmhelper,0)
+set(@farmfinish, 0)
+exec("farmHelper.txt","Farm Helper");
+
+// Checking inventory
+log("&6&lJookly Kernel &r&7> Checking if inventory is full")
+set(@invcheck,1);
+exec("invChecker.txt","Checking Inventory");
+do();wait(1t);until(@invcheck == 0);
+
+// CONFIG
+@#farmthreshold = 65
+@sell = 0
+@selltonpc = 0
+@selltobazzar = 0
+char(&cent,37);
+
+// Farming
+set(@waittoscan,1);
+exec("scan.txt","Scanning Farms");
+do();wait(1t);until(@waittoscan==0);
+set(@waittofinishfarming,1);
+exec("farm.txt","Farmer");
+do();wait(1t);until(@waittofinishfarming==0);
+
+// Final check if any farms remain
+set(@waittofinishfarming,1);
+exec("farm.txt","Farmer");
+do();wait(1t);until(@waittofinishfarming==0);
+
+stop(Farm Helper);
+log("&6&lJookly Kernel &r&7> Farmed all farms or no farms need to be farmed")
+exec("hubSwitcher.txt","Hub Switcher");

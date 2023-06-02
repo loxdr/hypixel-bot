@@ -1,0 +1,45 @@
+// Scan calculations
+function scan(#firstx,#firsty,#height,#seconddifference,#subtract,#maxwheat);
+	set(#wheat,0);
+	unsafe(600);
+		for(#row,%#firstx%,%#firsty%);
+		    for(#length,0,%#seconddifference%);
+		    	dec(#length,%#subtract%);
+		        getid(%#row%,%#height%,%#length%,&idvar);
+		        if(&idvar == "wheat");
+		            inc(#wheat);
+		        endif;
+		    next;
+		next;
+	endunsafe;
+	getpercentage(#wheatpercent,%#wheat%,%#maxwheat%);
+	return(%#wheatpercent%);
+endfunction;
+
+char(&cent,37);
+@#wheatpercent1 = scan(37,48,70,8,126,75)
+@#wheatpercent2 = scan(55,71,71,15,141,204)
+@#wheatpercent3 = scan(65,81,72,15,168,184)
+@#wheatpercent4 = scan(53,66,72,13,189,140)
+@#wheatpercent5 = scan(18,29,71,11,183,104)
+@#total = 0
+set(@farmthishub,0);
+inc(@#total,%@#wheatpercent1%);
+inc(@#total,%@#wheatpercent2%);
+inc(@#total,%@#wheatpercent3%);
+inc(@#total,%@#wheatpercent4%);
+inc(@#total,%@#wheatpercent5%);
+if(@#wheatpercent1 > @#farmthreshold);
+	log("&6&lJookly Kernel &r&7> Doing Farm 1");
+	set(@farm1,1);
+endif;
+if(@#wheatpercent2 > @#farmthreshold);
+	log("&6&lJookly Kernel &r&7> Doing Farm 2");
+	set(@farm2,1);
+endif;
+if(@#wheatpercent3 > @#farmthreshold);
+	log("&6&lJookly Kernel &r&7> Doing Farm 3");
+	set(@farm3,1);
+endif;
+
+set(@waittoscan,0);

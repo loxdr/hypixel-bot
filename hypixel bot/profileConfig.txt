@@ -1,0 +1,64 @@
+clearchat()
+log("&6&lJookly Kernel &r&7> Executing Profile configuration")
+log("&6&lJookly Kernel &r&7> Moving to random location")
+#randposcount = 0
+random(#randposcount,5,1);
+do(%#randposcount%)
+	#randx = 0
+	#randz = 0
+	random(#randx,12,-12);
+	random(#randz,20,1);
+	dec(#randz,90);
+	goto(%#randx%,~,%#randz%);
+	do;until(!PATHFINDING)
+	#randyaw = 0
+	#randpitch = 0
+	random(#randyaw,359,0);
+	random(#randpitch,2,1);
+	if(#randpitch==1)
+		#randhigh
+		random(#randhigh,359,300);
+		set(#randpitch,#randhigh)
+	else;
+		#randlow
+		random(#randlow,40,1);
+		set(#randpitch,40)
+	endif
+	looks(%#randyaw%,%#randpitch%,2);
+loop;
+log("&6&lJookly Kernel &r&7> At random location")
+wait(1)
+gui("inventory");
+wait(2)
+slotclick(44)
+wait(1)
+slotclick(50);
+wait(1)
+slotclick(10);
+wait(1)
+slotclick(4);
+wait(2)
+if(@roman == 1)
+	log("&6&lJookly Kernel &r&7> Disabled Roman Numerals Sucessfully")
+else;
+	slotclick(4);
+	log("&6&lJookly Kernel &r&7> Disabled Roman Numerals Sucessfully")
+endif
+wait(2)
+slotclick(49);
+wait(2)
+slotclick(40);
+wait(2)
+if(@profileview == 1)
+	log("&6&lJookly Kernel &r&7> Disabled Profile Viewer Sucessfully")
+else;
+	slotclick(40);
+	log("&6&lJookly Kernel &r&7> Disabled Profile Viewer Sucessfully")
+endif
+wait(1)
+slotclick(49);
+wait(2)
+clearchat()
+log("&6&lJookly Kernel &r&7> Finished Profile configuration")
+set(@configfinish, 1)
+gui()

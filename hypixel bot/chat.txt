@@ -1,0 +1,18 @@
+ifcontains(%CHATCLEAN%,"Skill Numerals is now disabled!");
+    set(@roman, 1)
+endif
+ifcontains(%CHATCLEAN%,"Skill Numerals is now enabled!");
+    set(@roman, 0)
+endif
+ifcontains(%CHATCLEAN%,"Profile Viewer is now disabled!");
+    set(@profileview, 1)
+endif
+ifcontains(%CHATCLEAN%,"Profile Viewer is now enabled!");
+    set(@profileview, 0)
+endif
+ifcontains(%CHATCLEAN%,"Your Inventory is full!");
+    set(@fullinv,1)
+endif
+ifcontains(%CHATCLEAN%,"You need the Cookie Buff to use this command!");
+    set(@boostercookie,0)
+endif

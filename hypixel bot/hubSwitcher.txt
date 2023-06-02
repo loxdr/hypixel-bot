@@ -1,0 +1,16 @@
+log("&6&lJookly Kernel &r&7> Switching Hubs")
+looks(north,0.4f);
+looks(+45,10,0.4f);
+keydown(forward);
+wait(3)
+keyup(forward);
+
+// detect (the barn) in scoreboard
+
+wait(4)
+looks(+170,,0.4f);
+keydown(forward);
+wait(3)
+keyup(forward);
+wait(4)
+exec("farm_Module.txt","Farm Operations");

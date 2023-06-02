@@ -1,0 +1,57 @@
+log("&6&lJookly Kernel &r&7> Farming 20 Unlocker")
+wait(20t)
+log("&6&lJookly Kernel &r&7> Starting")
+reconnect(on)
+reconnect(5)
+set(@configfinish, 0)
+set(@farmfinish, 0)
+set(@smh, 1)
+echo(/l)
+wait(20t)
+log("&6&lJookly Kernel &r&7> In Lobby")
+wait(30t)
+echo(/skyblock)
+wait(50t)
+if(%XPOS% == -3)
+	if(%YPOS% == 70)
+		log("&6&lJookly Kernel &r&7> In Village")
+	else
+		echo(/is)
+		log("&6&lJookly Kernel &r&7> At Island")
+		wait(50t)
+		echo(/hub)
+		log("&6&lJookly Kernel &r&7> In Village")
+		wait(5)
+	endif
+else
+	echo(/is)
+	log("&6&lJookly Kernel &r&7> At Island")
+	wait(50t)
+	echo(/hub)
+	log("&6&lJookly Kernel &r&7> In Village")
+	wait(5)
+endif
+wait(2)
+
+//GetBalance(&bal)
+//GetBalance(#startbal)
+//GetBits(&bits)
+//clearchat();
+//log("&6&lJookly Kernel &r&7> Starting Modules")
+//log("&6&lJookly Kernel &r&7> Current Balance: %&bal%")
+//log("&6&lJookly Kernel &r&7> Current Bits: %&bits%"
+
+//exec("profileConfig.txt","Profile Config");
+//do()
+//	wait(1)
+//until(@configfinish == 1);
+
+exec("farm_Module.txt","Farm Operations");
+
+//do()
+//	wait(1)
+//until(@farmfinish == 1);
+
+//exec("cooldown.txt","Cooldown Manager");
+//exec("failsafe.txt","Failsafe Manager");
+

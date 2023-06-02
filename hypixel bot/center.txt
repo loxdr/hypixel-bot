@@ -1,0 +1,18 @@
+#lower_limit = 350; 
+#upper_limit = 650;
+do();
+	match("%XPOSF% %ZPOSF%", "^\-?\d+\.(\d+) \-?\d+\.(\d+)$", {dec_x,#dec_z}); 
+	if( (#dec_x < #lower_limit)||(#dec_z < #lower_limit)||(#dec_x > #upper_limit)||(#dec_z >#upper_limit) )
+		;
+		calcyawto(%XPOS%, %ZPOS%,#yaw); 
+		inc(#yaw, 180); 
+		looks(%#yaw%,90); 
+		keydown(sneak);
+		keydown(forward); 
+	else;
+		keyup(forward); 
+		keyup(sneak);
+		break; 
+	endif; 
+loop;
+set(@centering, 0)

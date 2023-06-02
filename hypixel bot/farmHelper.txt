@@ -1,0 +1,12 @@
+do();
+	if(@farmhelper == 1);
+		unsafe(1);
+			slot(1);
+			do();
+				key(attack);
+			while(@farmhelper == 1);
+		endunsafe;
+	else;
+		wait(500ms)
+	endif;
+loop;
